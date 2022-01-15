@@ -1,0 +1,164 @@
+@import url("variables.css");
+
+@font-face {
+    font-family: poppins;
+    src: url(../fonts/Poppins/Poppins-Regular.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: ABeeZee;
+    src: url(../fonts/ABeeZee/ABeeZee-Regular.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: ABeeZee, sans-serif;
+}
+
+p {
+    margin: unset;
+}
+
+.main {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    margin-top: 85px;
+}
+
+.main .form {
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    width: 550px;
+    padding: 40px 80px;
+}
+
+@media screen and (max-width: 590px) {
+    .main .form {
+        width: 90%;
+        padding: 40px;
+    }
+}
+
+.main .form form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.main .form form .box .name {
+    font-size: 14px;
+}
+
+.main .form form .box .inp {
+    background: #f6f6f6;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.main .form form .box .inp input {
+    background: transparent;
+    color: #222222;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+.main .form form .box .inp input:-webkit-autofill{
+    background-color: transparent !important;
+}
+
+
+.main .form form .box .inp i {
+    font-size: 20px;
+}
+
+.main .form form .box .inp .see_pass.active {
+    color: #8080804a;
+}
+
+.main .form form .box button {
+    font-family: poppins, sans-serif;
+    border: none;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    height: 44px;
+    border-radius: 2px;
+    background-color: #939191eb;
+    color: white;
+    font-size: 14px;
+}
+
+.main .form form .box button.active {
+    background-color: var(--blue) !important;
+}
+
+.main .form form .db_box {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    .main .form form .db_box {
+        flex-direction: column;
+    }
+}
+
+.main .form form .db_box_radio .name {
+    font-size: 14px;
+}
+
+.main .form form .db_box_radio .box .inp {
+    display: flex;
+    gap: 20px;
+    background: transparent;
+    align-items: center;
+    height: 50px;
+}
+
+.main .form form .db_box_radio .box .inp label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: unset;
+}
+
+.main .form form .db_box_radio .box .inp input[type="radio"] {
+    width: unset;
+}
+
+.main .form form .db_box_radio .box .inp p {
+    font-size: 13px;
+}
+
+.main .form .form_ft {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.main .form .form_ft p {
+    font-size: 13px;
+    color: black;
+}
+
+.main .form .form_ft a {
+    font-size: 13px;
+    color: #2e96d9;
+}
+
+.navbar {
+    height: unset;
+}

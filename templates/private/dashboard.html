@@ -1,0 +1,696 @@
+{% extends "private/base.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="content-well" app-data="data-market">
+
+        <div class="tab-menu--form-menu">
+
+            <div class="tabs-menu">
+
+                <!-- Nav tabs -->
+                <div class="tab-nav desktop--tab--menu  size-3 m-auto d-flex align-items-center justify-content-between flex-wrap">
+
+                    <ul class="nav nav-pills desktop_nav" role="tablist">
+
+                        <li class="active nav-tabs">
+                            <a class="nav-link active" id="pills-all" data-toggle="pill" href="#all"
+                               aria-expanded="true" role="tab" aria-selected="true" nav_data="all">All</a>
+                        </li>
+
+                        <li class="nav-tabs">
+                            <a class="nav-link" data-toggle="pill" href="#individual_deals" role="tab"
+                               nav_data="individual_deals">
+                                Individual Deals</a>
+                        </li>
+
+                        <li class="nav-tabs">
+                            <a href="#funds_and_vehicle" class="nav-link" data-toggle="tab" role="tab"
+                               nav_data="funds_and_vehicle">
+                                Funds & Vehicles</a>
+                        </li>
+
+                        <li class="nav-tabs">
+                            <a href="#tailored_portfolio" class="nav-link" role="tab" data-toggle="pill"
+                               nav_data="tailored_portfolio">
+                                Tailored Portfolio
+                            </a>
+                        </li>
+
+                        <li class="nav-tabs fav">
+                            <a href="#favourites" class="nav-link" data-toggle="tab" role="tab" nav_data="favourites">
+                                Favorites
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Mobile menu tabs -->
+                <div class="tab-nav mobile-tab-menu" data-mobile-tabs>
+                    <ul class="navbar mobile-tab-list">
+                        <li class="nav-item --mobile-tab-item dropdown">
+                            <div class="nav-link display-7 d-flex justify-content-between " role="button"
+                                 data-toggle="dropdown" aria-expanded="true" nav_data="all">
+                                <span id="txt_placeholder" class="navlink">All</span>
+                                <i class="ri-arrow-down-s-fill"></i>
+                            </div>
+                            <div class="dropdown-menu" id="mb_tabs">
+
+                                <ul class="nav nav-pills mobile_nav " role="tablist">
+                                    <li class="nav-tabs">
+                                        <a class="nav-link active" id="pills-all" data-toggle="pill" href="#all"
+                                           aria-expanded="true" role="tab" aria-selected="true" nav_data="all">
+                                            All
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-tabs">
+                                        <a class="nav-link" data-toggle="pill" href="#individual_deals"
+                                           role="tab" nav_data="individual_deals">
+                                            Individual Deals
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-tabs">
+                                        <a href="#funds_and_vehicle" class="nav-link" data-toggle="tab"
+                                           role="tab" nav_data="funds_and_vehicle">
+                                            Funds & Vehicles
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-tabs">
+                                        <a href="#tailored_portfolio" class="nav-link" role="tab"
+                                           data-toggle="pill" nav_data="tailored_portfolio">
+                                            Tailored Portfolio
+                                        </a>
+                                    </li>
+
+
+                                    <li class="nav-tabs fav">
+                                        <a href="#favourites" class="nav-link" data-toggle="tab" role="tab"
+                                           nav_data="favourites">
+                                            Favorites
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="form">
+
+                <div class="filter-container">
+
+
+                    <div class="txt d-flex align-items-center display-6 mb-1 mt-4 justify-content-between">
+                        <button type="button" class="d-flex btn bg-transparent pl-0 text-brown"
+                                id="hide_filter">
+                            <span class="mr-2">Hide Filters</span><i class="ri-arrow-up-line text-dark"
+                                                                     data-wrap_icon></i>
+                        </button>
+
+                        <button type="reset" class="muted btn bg-transparent pr-0" id="reset_form">Reset
+                            All
+                        </button>
+                    </div>
+
+                    <div class="p-3 elements collapse" data-filter-collection>
+
+                        <div class="row m-0 mobile-filter--list" data-filters>
+
+                            <div class="mobile--header justify-content-between align-items-center d-none">
+                                <button class="btn btn-sm p-2 display-7" data-target="mobile_filter_btn">
+                                    <i class="ri-close-line"></i>
+                                </button>
+
+                                <h4 class="title display-6 mb-0">Apply filters</h4>
+
+                                <button class="btn btn-sm p-2 display-7" data-reset> Reset all</button>
+                            </div>
+
+
+                            <label class="input-group col-sm-3 col-md-2 col-lg-2" data-filter-link>
+
+                                <div class="label_placeholder d-flex justify-content-between align-items-center"
+                                     data-placeholder>
+                                    <input type="text" class="dropdown-collection input-control small" disabled
+                                           value="Return">
+
+                                    <div class="icon d-flex ml-2 align-items-center">
+                                        <div class="active-count d-none" data-column-count>
+                                        </div>
+                                        <i class="ri-arrow-right-s-fill"></i>
+                                    </div>
+                                </div>
+
+                                <div class="filter--selection d-none" data-category--returns>
+
+                                    <div class="wrapper">
+                                        <div class="form--selection-rows d-flex justify-content-between">
+
+                                            {% for data in filters[0] %}
+
+                                                <div class="selection--row" id="first">
+
+                                                    <div class="row-caption mb-3">
+                                                        <h3 class="display-5 text-brown mb-0">{{ data[0] }} <sup>*</sup>
+                                                        </h3>
+                                                        <p class="muted mb-0 d-none" data-selection>unselect</p>
+                                                    </div>
+
+                                                    <form class="list" parent_id="{{ data[0] }}">
+                                                        {% for cate in data[1] %}
+                                                            <div class="select">
+                                                                <input type="radio" id="{{ cate }}" class="checkbox"
+                                                                       name="checkbox">
+                                                                <label for="{{ cate }}">
+                                                                    {{ cate }}</label></div>
+                                                        {% endfor %}
+
+                                                    </form>
+
+                                                </div>
+
+                                            {% endfor %}
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </label>
+
+                            <label class="input-group col-sm-3 col-md-2 col-lg-2" data-filter-link>
+
+                                <div class="label_placeholder d-flex justify-content-between align-items-center"
+                                     data-placeholder>
+                                    <input type="text" class="dropdown-collection input-control small " disabled
+                                           value="Deal Terms">
+
+
+                                    <div class="icon d-flex ml-2 align-items-center">
+                                        <div class="active-count d-none" data-column-count>
+
+                                        </div>
+                                        <i class="ri-arrow-right-s-fill"></i>
+                                    </div>
+
+                                </div>
+
+                                <div class="filter--selection d-none">
+                                    <div class="wrapper">
+                                        <div class="form--selection-rows d-flex justify-content-between"
+                                             data-category--deal_terms>
+
+                                            {% for data in filters[1] %}
+
+                                                <div class="selection--row">
+
+                                                    <div class="row-caption mb-3">
+                                                        <h3 class="display-5 text-brown mb-0">{{ data[0] }} <sup>*</sup>
+                                                        </h3>
+                                                        <p class="muted mb-0 d-none" data-selection>unselect</p>
+                                                    </div>
+
+                                                    <form class="list" parent_id="{{ data[0] }}">
+                                                        {% for cate in data[1] %}
+                                                            <div class="select">
+                                                                <input type="radio" id="{{ cate }}" class="checkbox"
+                                                                       name="checkbox">
+                                                                <label for="{{ cate }}">
+                                                                    {{ cate }}</label></div>
+                                                        {% endfor %}
+
+                                                    </form>
+
+                                                </div>
+
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </label>
+
+                            <label class="input-group col-sm-3 col-md-2 col-lg-2" data-filter-link>
+
+                                <div class="label_placeholder d-flex justify-content-between align-items-center"
+                                     data-placeholder>
+
+                                    <input type="text" class="dropdown-collection input-control small " disabled
+                                           value="Offerings">
+
+                                    <div class="icon d-flex ml-2 align-items-center">
+                                        <div class="active-count d-none" data-column-count>
+                                            1
+                                        </div>
+                                        <i class="ri-arrow-right-s-fill"></i>
+                                    </div>
+                                </div>
+
+                                <div class="filter--selection d-none">
+
+                                    <div class="wrapper">
+                                        <div class="form--selection-rows d-flex justify-content-between"
+                                             data-category--offerings>
+
+                                            {% for data in filters[2] %}
+
+                                                <div class="selection--row">
+
+                                                    <div class="row-caption mb-3">
+                                                        <h3 class="display-5 text-brown mb-0">{{ data[0] }} <sup>*</sup>
+                                                        </h3>
+                                                        <p class="muted mb-0 d-none" data-selection>unselect</p>
+                                                    </div>
+
+                                                    <form class="list" parent_id="{{ data[0] }}">
+                                                        {% for cate in data[1] %}
+                                                            <div class="select">
+                                                                <input type="radio" id="{{ cate }}" class="checkbox"
+                                                                       name="checkbox">
+                                                                <label for="{{ cate }}">
+                                                                    {{ cate }}</label></div>
+                                                        {% endfor %}
+
+                                                    </form>
+
+                                                </div>
+
+                                            {% endfor %}
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </label>
+
+                            <label class="input-group col-sm-3 col-md-2 col-lg-2" data-filter-link>
+
+                                <div
+                                        class="label_placeholder d-flex  justify-content-between align-items-center"
+                                        data-placeholder>
+                                    <input type="text" class="dropdown-collection input-control small " disabled
+                                           value="Sponsors">
+
+
+                                    <div class="icon d-flex ml-2 align-items-center">
+                                        <div class="active-count d-none" data-column-count>
+                                            1
+                                        </div>
+                                        <i class="ri-arrow-right-s-fill"></i>
+                                    </div>
+
+                                </div>
+
+                                <div class="filter--selection d-none">
+                                    <div class="wrapper">
+                                        <div class="form--selection-rows d-flex justify-content-between"
+                                             data-category--eligibility>
+
+                                            {% for data in filters[3] %}
+
+                                                <div class="selection--row">
+
+                                                    <div class="row-caption mb-3">
+                                                        <h3 class="display-5 text-brown mb-0">{{ data[0] }} <sup>*</sup>
+                                                        </h3>
+                                                        <p class="muted mb-0 d-none" data-selection>unselect</p>
+                                                    </div>
+
+                                                    <form class="list" parent_id="{{ data[0] }}">
+                                                        {% for cate in data[1] %}
+                                                            <div class="select">
+                                                                <input type="radio" id="{{ cate }}" class="checkbox"
+                                                                       name="checkbox">
+                                                                <label for="{{ cate }}">
+                                                                    {{ cate }}</label></div>
+                                                        {% endfor %}
+
+                                                    </form>
+
+                                                </div>
+
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </label>
+
+                            <label class="input-group col-sm-3 col-md-2 col-lg-2" data-filter-link>
+
+                                <div class="label_placeholder d-flex justify-content-between align-items-center"
+                                     data-placeholder>
+                                    <input type="text" class="dropdown-collection input-control small " disabled
+                                           value="Eligibility">
+
+
+                                    <div class="icon d-flex ml-2 align-items-center">
+                                        <div class="active-count d-none" data-column-count>
+                                            1
+                                        </div>
+                                        <i class="ri-arrow-right-s-fill"></i>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="filter--selection d-none">
+                                    <div class="wrapper">
+                                        <div class="form--selection-rows d-flex justify-content-between"
+                                             data-category--sponsors>
+
+                                            {% for data in filters[4] %}
+
+                                                <div class="selection--row">
+
+                                                    <div class="row-caption mb-3">
+                                                        <h3 class="display-5 text-brown mb-0">{{ data[0] }} <sup>*</sup>
+                                                        </h3>
+                                                        <p class="muted mb-0 d-none" data-selection>unselect</p>
+                                                    </div>
+
+                                                    <form class="list" parent_id="{{ data[0] }}">
+                                                        {% for cate in data[1] %}
+                                                            <div class="select">
+                                                                <input type="radio" id="{{ cate }}" class="checkbox"
+                                                                       name="checkbox">
+                                                                <label for="{{ cate }}">
+                                                                    {{ cate }}</label></div>
+                                                        {% endfor %}
+
+                                                    </form>
+
+                                                </div>
+
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </label>
+
+                        </div>
+
+
+                        <label
+                                class="input-control bg-white col-sm-9 col-md-6 col-lg-3 d-flex align-items-center"
+                                data-search>
+                            <input type="text" class="dropdown-collection input-control small"
+                                   placeholder="Search by Name, City, Sponsor" search_input>
+                            <i class="ri-search-2-line"></i>
+
+                            <button class="btn mobile-filter-btn" type="button"
+                                    data-target="mobile_filter_btn">filter
+                            </button>
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="well--header pt-2 pb-3 position-relative">
+
+            <ul class="well-nav navbar">
+
+                <li class="well-nav-item dropdown d-flex align-items-center mr-2" sortbyfilter_box>
+                    <span class="text-brown small">Sort By</span>
+                    <a href="#" class="nav-link dropdown-toggle display-7" role="button" data-toggle="dropdown"
+                       aria-expanded="true" sortbyfilter_current>All</a>
+
+                    <div class="dropdown-menu" sortbyfilter_links>
+                        <a href="#" class="dropdown-item "> All</a>
+                        <a href="#" class="dropdown-item"> Recently Updated</a>
+                        <a href="#" class="dropdown-item"> Recently Posted </a>
+                        <a href="#" class="dropdown-item">IRR (High to Low)</a>
+                        <a href="#" class="dropdown-item">AVG Cash Yield (High to Low)</a>
+                        <a href="#" class="dropdown-item">Minimum Investment (Low to High)</a>
+                        <a href="#" class="dropdown-item">Equity Multiple (High to Low)</a>
+                    </div>
+                </li>
+
+                <li class="well-nav-item dropdown d-flex align-items-center mr-2" sortbyview_box>
+                    <span class="text-brown small">View</span>
+                    <a href="#" class="nav-link dropdown-toggle display-7" role="button" data-toggle="dropdown"
+                       aria-expanded="true" sortbyview_current>All</a>
+
+                    <div class="dropdown-menu" sortbyview_links>
+                        <a href="#" class="dropdown-item"> Current Offerings</a>
+                        <a href="#" class="dropdown-item"> Funded Offerings </a>
+                        <a href="#" class="dropdown-item "> All </a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="well--body">
+
+            <div class="tab-content" id="pills-tabContent">
+
+                <div class="tab-pane fade active show" id="all" role="tabpanel">
+
+                    <div class="container offers-section">
+
+                        <div class="row grid-box" data-open property_box>
+
+                            {% for house in properties["not_closed"] %}
+
+                                <a href="#" class="grid-card" property_id="{{ house[0] }}">
+
+                                    <div class="grid--card-top">
+
+                                        <div
+                                                class="grid--highlight small d-flex justify-content-between align-items-center">
+
+                                            <div class="l-txt mr-2">
+                                                <span class="mr-2">{{ house[19] }}</span>
+                                                <span>{{ house[18] }}</span>
+                                            </div>
+
+                                            <span class="r-txt text-danger">{{ house[36] }}</span>
+                                        </div>
+
+                                        <img src="/static/private_/houses/{{ house[0] }}/1.png" alt="img">
+
+                                    </div>
+
+                                    <div class="grid--card-footer">
+
+                                        <div class="card--head d-flex align-items-center">
+                                            <div class="name-section">
+                                                <h4 class="location small text-brown">{{ house[3] }}, {{ house[2] }}</h4>
+                                                <h3 class="name display-5">{{ house[1] }} </h3>
+                                            </div>
+                                            {% if house[35] == "isFavourite" %}
+                                                <i class="active ri-heart-fill display-4 card-icon" fav_btn></i>
+                                            {% else %}
+                                                <i class="ri-heart-line display-4 card-icon" fav_btn></i>
+
+                                            {% endif %}
+
+                                        </div>
+
+                                        <div class="card--bottom">
+
+                                            <div class="card--caption">
+                                                <span class="d-block display-6">{{ house[4] }}</span>
+                                                <div class="card-badge badge badge-primary">{{ house[29] }}</div>
+                                            </div>
+
+                                            <ul class="card--des">
+                                                <li
+                                                        class="des-item d-flex align-items-center justify-content-between">
+                                                    <span class="list-name"> IRR</span>
+                                                    <span class="list-percent">{{ house[9] }}%</span>
+                                                </li>
+                                                <li
+                                                        class="des-item d-flex align-items-center justify-content-between">
+                                                    <span class="list-name"> Equity Multiple</span>
+                                                    <span class="list-percent">{{ house[12] }}x</span>
+                                                </li>
+                                                <li
+                                                        class="des-item d-flex align-items-center justify-content-between">
+                                                    <span class="list-name"> Average Cash Yield</span>
+                                                    <span class="list-percent">{{ house[10] }}%</span>
+                                                </li>
+                                                <li
+                                                        class="des-item d-flex align-items-center justify-content-between">
+                                                    <span class="list-name"> Investment period</span>
+                                                    <span class="list-percent">{{ house[14] }} years</span>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            {% endfor %}
+
+                        </div>
+
+                        <div class="mt-5" data-closed>
+
+                            <div class="grid-header mb-5">
+                                <h3 class="display-5 ">Closed Offerings</h3>
+                                <hr/>
+                            </div>
+
+                            <div class="row grid-box">
+                                {% for house in properties["closed"] %}
+                                    <a href="#" class="grid-card" property_id="{{ house[0] }}"
+                                       style="pointer-events: none;cursor: default">
+
+                                        <div class="grid--card-top">
+
+                                            <div class="grid--highlight small d-flex justify-content-between align-items-center">
+
+                                                <div class="l-txt mr-2">
+                                                    <span class="mr-2">{{ house[19] }}</span>
+                                                    <span>{{ house[18] }}</span>
+                                                </div>
+
+                                                <span class="r-txt text-danger"></span>
+                                            </div>
+
+
+                                            <img src="/static/private_/houses/{{ house[0] }}/1.png" alt="img">
+
+                                        </div>
+
+                                        <div class="grid--card-footer">
+
+                                            <div class="card--head d-flex align-items-center">
+
+
+                                                <div class="name-section">
+                                                    <h4 class="location small text-brown">{{ house[3] }}, {{ house[2] }}</h4>
+                                                    <h3 class="name display-5">{{ house[1] }} </h3>
+                                                </div>
+                                                {% if house[31] == "isFavourite" %}
+                                                    <i class="active ri-heart-fill display-4 card-icon" fav_btn></i>
+                                                {% else %}
+                                                    <i class="ri-heart-line display-4 card-icon" fav_btn></i>
+
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="card--bottom">
+
+                                                <div class="card--caption">
+                                                    <span class="d-block display-6">{{ house[4] }}</span>
+                                                    <div class="card-badge badge badge-primary">{{ house[29] }}</div>
+                                                </div>
+
+                                                <ul class="card--des">
+                                                    <li
+                                                            class="des-item d-flex align-items-center justify-content-between">
+                                                        <span class="list-name"> IRR</span>
+                                                        <span class="list-percent">{{ house[9] }}%</span>
+                                                    </li>
+                                                    <li
+                                                            class="des-item d-flex align-items-center justify-content-between">
+                                                        <span class="list-name"> Equity Multiple</span>
+                                                        <span class="list-percent">{{ house[12] }}x</span>
+                                                    </li>
+                                                    <li
+                                                            class="des-item d-flex align-items-center justify-content-between">
+                                                        <span class="list-name"> Average Cash Yield</span>
+                                                        <span class="list-percent">{{ house[10] }}%</span>
+                                                    </li>
+                                                    <li
+                                                            class="des-item d-flex align-items-center justify-content-between">
+                                                        <span class="list-name"> Investment period</span>
+                                                        <span class="list-percent">{{ house[14] }}</span>
+                                                    </li>
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid-card-alert p-2 display-7">
+                                            <p class="m-0 p-0 col-7 m-auto">
+                                                Closed: {{ house[7] }}
+                                            </p>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="individual_deals" role="tabpanel">
+                    <div class="container offers-section">
+
+                        <div class="row grid-box" data-open tabchannel>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade " id="funds_and_vehicle" role="tabpanel">
+                    <div class="container offers-section">
+
+                        <div class="row grid-box" data-open tabchannel>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade " id="tailored_portfolio" role="tabpanel">
+                    <div class="container offers-section">
+
+                        <div class="row grid-box" data-open tabchannel>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade " id="favourites" role="tabpanel" favourite_menu>
+                    <div class="container offers-section">
+
+                        <div class="row grid-box" data-open tabchannel>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

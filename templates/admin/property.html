@@ -1,0 +1,411 @@
+{% extends "admin/base.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <section class="main_content dashboard_part large_header_bg">
+        <!-- menu  -->
+        <div class="container-fluid no-gutters">
+            <div class="row">
+                <div class="col-lg-12 p-0 ">
+                    <div class="header_iner d-flex justify-content-between align-items-center">
+                        <div class="sidebar_icon d-lg-none">
+                            <i class="ti-menu"></i>
+                        </div>
+                        <div class="line_icon open_miniSide d-none d-lg-block">
+                            <i class="ri-menu-2-line" style="font-size: 20px"></i>
+                        </div>
+
+                        <div class="header_right d-flex justify-content-between align-items-center">
+                            <div class="profile_info">
+                                <img src="/static/private_/profile.jpg" alt="#">
+                                <div class="profile_info_iner">
+                                    <div class="profile_author_name">
+                                        <p>Admin </p>
+                                        <h5>Dr. Anonymous</h5>
+                                    </div>
+                                    <div class="profile_info_details">
+                                        <a href="/logout">Log Out </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ menu  -->
+        <div class="main_content_iner overly_inner ">
+            <div class="container-fluid p-0 ">
+                <!-- page title  -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                            <div class="page_title_left d-flex align-items-center">
+                                <h3 class="f_s_25 f_w_700 dark_text mr_30">Property</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xl-12 ">
+                        <div class="white_card card_height_100 mb_30 user_crm_wrapper">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="single_crm">
+                                        <div class="icon">
+                                            <i class="ri-home-5-line"></i>
+                                        </div>
+                                        <div class="crm_body">
+                                            <h4>{{ data["total_properties"] }}</h4>
+                                            <p>Total Properties</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="single_crm">
+                                        <div class="icon">
+                                            <i class="ri-door-closed-line "></i>
+                                        </div>
+                                        <div class="crm_body">
+                                            <h4>{{ data["total_closed"] }}</h4>
+                                            <p>Total Closed properties</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="single_crm">
+                                        <div class="icon">
+                                            <i class="ri-door-open-line"></i>
+                                        </div>
+                                        <div class="crm_body">
+                                            <h4>{{ data["total_open"] }}</h4>
+                                            <p>Total Open properties</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="white_card card_height_100 mb_30">
+                            <div class="white_card_header">
+                                <div class="box_header m-0">
+                                    <div class="main-title d-flex justify-content-between align-items-center w-100">
+                                        <h3 class="m-0">Properties</h3>
+                                        <button class="add_property btn btn_4 text-white "
+                                                style="background-color: #884FFB;font-family: ABeeZee" add_property>Add
+                                            New Property
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="white_card_body">
+                                <div class="QA_section">
+                                    <div class="QA_table mb_30">
+                                        <!-- table-responsive -->
+                                        <table class="table lms_table_active3 ">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">State</th>
+                                                <th scope="col">City</th>
+                                                <th scope="col">Sponsor</th>
+                                                <th scope="col">Invest Type</th>
+                                                <th scope="col">Is Closed ?</th>
+                                                <th scope="col">Edit</th>
+                                                <th scope="col">Delete</th>
+                                                <th scope="col">View More</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for x in data["properties"] %}
+                                                <tr>
+                                                    <td>{{ loop.index }}</td>
+                                                    <td>
+                                                        <div class="name">
+                                                            <p class="nm">{{ x["name"] }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{ x["state"] }}</td>
+                                                    <td>{{ x["city"] }}</td>
+                                                    <td>
+                                                        {{ x["sponsor"] }}
+                                                    </td>
+                                                    <td>{{ x["invest_type"] }}</td>
+                                                    <td>{{ x["is_closed"] }}</td>
+                                                    <td>
+                                                        <button class="ri-edit-2-line" edit_property
+                                                                id="{{ x["id"] }}"></button>
+                                                    </td>
+                                                    <td>
+                                                        <button class="ri-delete-bin-3-line" delete
+                                                                id="{{ x["id"] }}"></button>
+                                                    </td>
+                                                    <td>
+                                                        <button class="ri-eye-fill" view_more
+                                                                id="{{ x["id"] }}"></button>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer part -->
+        </div>
+    </section>
+    <!-- main content part end -->
+
+    <div class="confirm_receipt property__" AddProperty>
+        <div class="box" confirm_box>
+            <div class="title">New Property
+                <div class="btns">
+                    <button class="cancel" close_property>Close</button>
+                </div>
+            </div>
+            <div class="confirmation property_box" confirmation>
+                <form enctype="multipart/form-data" newpropertyform>
+                    <div class="image-upload">
+                    </div>
+
+                    <div class="forms_">
+
+
+                        <div class="box_">
+                            <label>Property Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+
+                        <div class="box_">
+                            <label>Property State</label>
+                            <input type="text" name="state" required>
+                        </div>
+
+                        <div class="box_">
+                            <label>Property City</label>
+                            <input type="text" name="city" required>
+                        </div>
+
+                        <div class="box_">
+                            <label>Property Sponsor</label>
+                            <input type="text" name="sponsor" required>
+                        </div>
+
+                        <div class="box_">
+                            <label>Investment Type</label>
+                            <select name="invest_type" required>
+                                <option value="Individual Deals">Individual Deals</option>
+                                <option value="Funds & Vehicles">Funds & Vehicles</option>
+                                <option value="Tailored Portfolio">Tailored Portfolio</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Investment Begins</label>
+                            <input type="date" name="invest_begins" required>
+                        </div>
+                        <div class="box_">
+                            <label>Investment Ends</label>
+                            <input type="date" name="invest_ends" required>
+                        </div>
+
+                        <div class="box_">
+                            <label>Investment is Closed ?</label>
+                            <select name="is_closed" required>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>IRR (%)</label>
+                            <input type="text" name="irr">
+                        </div>
+
+                        <div class="box_">
+                            <label>Average Cash Yield (%)</label>
+                            <input type="text" name="avg_cash_yield">
+                        </div>
+
+                        <div class="box_">
+                            <label>Preferred Return (%)</label>
+                            <input type="text" name="preferred_return">
+                        </div>
+
+                        <div class="box_">
+                            <label>Equity Multiple (x)</label>
+                            <input type="text" name="equity_multiple">
+                        </div>
+
+                        <div class="box_">
+                            <label>Minimum Investment ($)</label>
+                            <input type="number" name="minimum_investment">
+                        </div>
+
+                        <div class="box_">
+                            <label>Minimum Hold Period (Years)</label>
+                            <input type="number" name="minimum_hold_period">
+                        </div>
+
+                        <div class="box_">
+                            <label>Loan To Cost (%)</label>
+                            <input type="number" name="loan_to_cost">
+                        </div>
+
+                        <div class="box_">
+                            <label>Distribution Period</label>
+                            <select name="distribution_period">
+                                <option value="Monthly">Monthly</option>
+                                <option value="Quarterly">Quarterly</option>
+                                <option value="Semi Annually">Semi Annually</option>
+                                <option value="Annually">Annually</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Investment Structure</label>
+                            <select name="investment_structure">
+                                <option value="Debt">Debt</option>
+                                <option value="Equity">Equity</option>
+                                <option value="Mezzanine Debt">Mezzanine Debt</option>
+                                <option value="Portfolio">Portfolio</option>
+                                <option value="REIT">REIT</option>
+                                <option value="Preferred Equity">Preferred Equity</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Investment Profile</label>
+                            <select name="investment_profile">
+                                <option value="Core">Core</option>
+                                <option value="Core Plus">Core Plus</option>
+                                <option value="Value Add">Value Add</option>
+                                <option value="Opportunistic">Opportunistic</option>
+                                <option value="Development">Development</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Properties Type</label>
+                            <select name="properties_type">
+                                {% for x in ["Flex","Hospitality","Industrial","Land","Medical Office","Mixed Use","Multi-Asset","Multifamily","Office","Residential","Retail","Senior Housing","Storage","Student Housing","Manufactured Housing","Built-to-Rent","Flex/Office","Data Center","Parking Garage","Co-Living","Specialty"] %}
+                                    <option value="{{ x }}">{{ x }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+
+                        <div class="box_">
+                            <label>Property Region</label>
+                            <select name="property_region">
+                                {% for x in ["East","West","Midwest","South","Multiple Regions"] %}
+                                    <option value="{{ x }}">{{ x }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>sample Products</label>
+                            <select name="sample_products">
+                                <option value="sample Product">sample Product</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Sponsor Experience</label>
+                            <select name="sponsor_experience">
+                                {% for x in ["Emerging","Seasoned","Tenured","Enterprise"] %}
+                                    <option value="{{ x }}">{{ x }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Sponsor Co-Investment (%)</label>
+                            <input type="number" name="sponsor_co_investment">
+                        </div>
+
+                        <div class="box_">
+                            <label>Repeat Sponsors</label>
+                            <select name="repeat_sponsors">
+                                <option value="Only repeat sponsors">Only repeat sponsors</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Investor Accreditation</label>
+                            <select name="investor_accreditation">
+                                {% for x in ["Accredited Investors Only","Non Accredited Eligible"] %}
+                                    <option value="{{ x }}">{{ x }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Exchange</label>
+                            <select name="exchange">
+                                <option value="1031 eligible">1031 eligible</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Opportunity Zone</label>
+                            <select name="opportunity_zone">
+                                <option value="1031 eligible">Opportunity Zone eligible</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>SD IRA Eligible</label>
+                            <select name="SD_IRA_eligible">
+                                <option value="SD IRA Eligible">SD IRA Eligible</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label> Investment Plan</label>
+                            <select name="invest_plan" required>
+                                <option value="Bronze">Bronze</option>
+                                <option value="Gold">Gold</option>
+                                <option value="Silver">Silver</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Offering</label>
+                            <select name="offering" required>
+                                <option value="funded offering">funded offering</option>
+                                <option value="current offering">current offering</option>
+                            </select>
+                        </div>
+
+                        <div class="box_">
+                            <label>Property Description</label>
+                            <textarea name="desc" required style="height: 50px"></textarea>
+                        </div>
+                        <div class="box_">
+                            <label>Investment Summary</label>
+                            <textarea name="investment_summary" required style="height: 50px"></textarea>
+                        </div>
+                    </div>
+                    <div class="submission">
+                        <button type="submit">Upload Property</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

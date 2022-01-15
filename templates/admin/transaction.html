@@ -1,0 +1,163 @@
+{% extends "admin/base.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <section class="main_content dashboard_part large_header_bg">
+        <!-- menu  -->
+        <div class="container-fluid no-gutters">
+            <div class="row">
+                <div class="col-lg-12 p-0 ">
+                    <div class="header_iner d-flex justify-content-between align-items-center">
+                        <div class="sidebar_icon d-lg-none">
+                            <i class="ti-menu"></i>
+                        </div>
+                        <div class="line_icon open_miniSide d-none d-lg-block">
+                            <i class="ri-menu-2-line" style="font-size: 20px"></i>
+                        </div>
+
+                        <div class="header_right d-flex justify-content-between align-items-center">
+                            <div class="profile_info">
+                                <img src="/static/private_/profile.jpg" alt="#">
+                                <div class="profile_info_iner">
+                                    <div class="profile_author_name">
+                                        <p>Admin </p>
+                                        <h5>Dr. Anonymous</h5>
+                                    </div>
+                                    <div class="profile_info_details">
+                                        <a href="/logout">Log Out </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ menu  -->
+        <div class="main_content_iner overly_inner ">
+            <div class="container-fluid p-0 ">
+                <!-- page title  -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                            <div class="page_title_left d-flex align-items-center">
+                                <h3 class="f_s_25 f_w_700 dark_text mr_30">Transaction</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xl-12 ">
+                        <div class="white_card card_height_100 mb_30 user_crm_wrapper">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="single_crm">
+                                        <div class="icon">
+                                            <i class="ri-checkbox-circle-fill"></i>
+                                        </div>
+                                        <div class="crm_body">
+                                            <h4>{{ onload["approved"] }}</h4>
+                                            <p>Total Approved</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="single_crm">
+                                        <div class="icon">
+                                            <i class="ri-loader-2-line "></i>
+                                        </div>
+                                        <div class="crm_body">
+                                            <h4>{{ onload["pending"] }}</h4>
+                                            <p>Total Pending</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="single_crm">
+                                        <div class="icon">
+                                            <i class="ri-bit-coin-fill"></i>
+                                        </div>
+                                        <div class="crm_body">
+                                            <h4>${{ onload["total_amount"] }}</h4>
+                                            <p>Total Amount Approved</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="white_card card_height_100 mb_30">
+                            <div class="white_card_header">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Transactions</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="white_card_body">
+                                <div class="QA_section">
+                                    <div class="QA_table mb_30">
+                                        <!-- table-responsive -->
+                                        <table class="table lms_table_active3 ">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Category</th>
+                                                <th scope="col">Plan</th>
+                                                <th scope="col">Ticket Status</th>
+                                                <th scope="col">View More</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for x in data %}
+                                                <tr>
+                                                    <td>{{ loop.index }}</td>
+                                                    <td>
+                                                        <div class="name">
+                                                            <img src="../{{ x["pf"] }}">
+                                                            <p class="nm">{{ x["email"] }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{ x["category"] }}</td>
+                                                    <td>{{ x["plan"] }}</td>
+                                                    <td>
+                                                        <select ChangeStatus value="{{ x["status"] }}"
+                                                                id="{{ x["id"] }}">
+                                                            <option value="waiting">Waiting</option>
+                                                            <option value="pending">Pending</option>
+                                                            <option value="approved">Approved</option>
+                                                            <option value="closed">Closed</option>
+                                                            <option value="decline">Decline</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <button class="ri-eye-fill" view_more
+                                                                id="{{ x["id"] }}"></button>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer part -->
+        </div>
+    </section>
+    <!-- main content part end -->
+
+
+
+{% endblock %}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>samples | Admin</title>
+
+    <link rel="icon" href="{{ url_for("static", filename="images/logo.png") }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for("static", filename="admin/css/bootstrap.min.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for("static", filename="admin/vendors/themefy_icon/themify-icons.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for("static", filename="admin/vendors/datatable/css/jquery.dataTables.min.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for("static", filename="admin/vendors/datatable/css/responsive.dataTables.min.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for("static", filename="admin/vendors/datatable/css/buttons.dataTables.min.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for("static", filename='admin/vendors/remixicon/remixicon.css') }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="admin/css/style.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for("static", filename="admin/css/2.0187fe53.chunk.css") }}"/>
+
+    {% block head %}{% endblock %}
+</head>
+<body class="crm_body_bg" app-page>
+
+<!-- main content part here -->
+
+<!-- sidebar  -->
+<nav class="sidebar">
+    <div class="logo d-flex justify-content-between">
+        <div class="sidebar_close_icon d-lg-none">
+            <i class="ti-close"></i>
+        </div>
+    </div>
+    <ul id="sidebar_menu">
+        <li class="">
+            <a href="/AppAdmin" aria-expanded="false" >
+                <div class="nav_icon_small">
+                   <i class="ri-apps-line"></i>
+                </div>
+                <div class="nav_title">
+                    <span>Dashboard </span>
+                </div>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="/AppAdmin/users" aria-expanded="false">
+                <div class="nav_icon_small">
+                       <i class="ri-user-4-line"></i>
+                </div>
+                <div class="nav_title">
+                    <span>Members</span>
+                </div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/AppAdmin/transactions" aria-expanded="false">
+                <div class="nav_icon_small">
+                       <i class="ri-exchange-funds-line"></i>
+                </div>
+                <div class="nav_title">
+                    <span>Investments</span>
+                </div>
+            </a>
+        </li>      <li class="">
+            <a href="/AppAdmin/property" aria-expanded="false">
+                <div class="nav_icon_small">
+                       <i class="ri-home-3-line"></i>
+                </div>
+                <div class="nav_title">
+                    <span>Property</span>
+                </div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/dashboard" aria-expanded="false">
+                <div class="nav_icon_small">
+                       <i class="ri-login-circle-line"></i>
+                </div>
+                <div class="nav_title">
+                    <span>View as Client</span>
+                </div>
+            </a>
+        </li>
+
+
+    </ul>
+</nav>
+<!--/ sidebar  -->
+
+
+{% block body %}{% endblock %}
+<!-- main content part end -->
+
+
+<div id="back-top" style="display: none;">
+    <a title="Go to Top" href="#">
+        <i class="ti-angle-up"></i>
+    </a>
+</div>
+
+<!-- footer  -->
+<script src="{{ url_for("static", filename="admin/js/jquery-3.4.1.min.js") }}"></script>
+<script src="{{ url_for("static", filename="admin/js/bootstrap.min.js") }}"></script>
+<script src="{{ url_for("static", filename="admin/js/metisMenu.js") }}"></script>
+<script src="{{ url_for("static", filename="admin/vendors/datatable/js/jquery.dataTables.min.js") }}"></script>
+<script src="{{ url_for("static", filename="admin/vendors/datatable/js/dataTables.responsive.min.js") }}"></script>
+<script src="{{ url_for("static", filename="admin/vendors/datatable/js/dataTables.buttons.min.js") }}"></script>
+<script src="{{ url_for("static", filename="admin/vendors/niceselect/js/jquery.nice-select.min.js") }}"></script>
+<script src="{{ url_for("static", filename="admin/js/sweetalert.min.js") }}"></script>
+<script src="{{ url_for("static", filename="admin/js/custom.js") }}"></script>
+<script src="{{ url_for("static", filename="admin/requests/general.js") }}"></script>
+</body>
+
+</html>

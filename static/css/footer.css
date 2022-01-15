@@ -1,0 +1,15 @@
+/* =======Footer======== */
+
+
+
+.custom-footer{
+    padding: 2rem 0 0 !important;
+    background-color: var(--primary-color);
+    color: var(--default-color) !important;
+}
+.ftco-footer p{
+    color: unset;
+}
+.custom-footer a{
+    color: var(--default-color) !important;
+}

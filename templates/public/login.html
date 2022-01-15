@@ -1,0 +1,34 @@
+{% extends "public/base.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <div class="main"  app-page="signin">
+        <div class="form">
+            <form SignInForm>
+                <div class="box">
+                    <p class="name">Email</p>
+                    <div class="inp">
+                        <input type="email" required name="email">
+                        <i class="ri-mail-line"></i>
+                    </div>
+                </div>
+                <div class="box">
+                    <p class="name">Password</p>
+                    <div class="inp">
+                        <input type="password" required name="password">
+                        <i class="ri-lock-2-line"></i>
+                    </div>
+                </div>
+                <div class="box">
+                    <button type="submit" disabled>sign in</button>
+                </div>
+            </form>
+            <div class="form_ft">
+                <p>Don't have an account ? <a href="/CreateAccount">Sign Up</a></p>
+                <a href="/forgot-password">Forgot Password</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "public/base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <div class="main"  app-page="signup">
+        <div class="form">
+            <form SignupForm>
+                <div class="box">
+                    <p class="name">Email</p>
+                    <div class="inp">
+                        <input type="email" required name="email">
+                        <i class="ri-mail-line"></i>
+                    </div>
+                </div>
+                <div class="db_box">
+                    <div class="box">
+                        <p class="name">Firstname</p>
+                        <div class="inp">
+                            <input type="text" required name="fname">
+                            <i class="ri-user-4-line"></i>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <p class="name">Lastname</p>
+                        <div class="inp">
+                            <input type="text" required name="lname">
+                            <i class="ri-user-4-line"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <p class="name">Create a password</p>
+                    <div class="inp">
+                        <input type="password" required name="password">
+                        <i class="ri-eye-line see_pass"></i>
+                    </div>
+                </div>
+                <div class="db_box_radio">
+                    <p class="name">Are you an accredited investor?</p>
+                    <div class="box">
+                        <div class="inp">
+                            <label>
+                                <input type="radio" required name="investor" value="yes">
+                                <p>Yes</p>
+                            </label>
+
+                            <label>
+                                <input type="radio" required name="investor" value="no">
+                                <p>No</p>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="box">
+                    <button type="submit" disabled>sign up</button>
+                </div>
+            </form>
+            <div class="form_ft">
+                <p>Already have an account ? <a href="/login">Sign In</a></p>
+                <a href="/forgot-password">Forgot Password</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

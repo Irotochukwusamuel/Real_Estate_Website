@@ -1,0 +1,13 @@
+/*====Variables=====*/
+:root {
+    --primary-color: #3a38bb;
+    --primary-color-50: hsl(0, 1%, 25%);
+    --default-color: hsl(40, 42%, 100%);
+    --dark-color: hsl(0, 1%, 10%);
+    --dark-color-50: hsl(0, 1%, 7%);
+    --white-50: hsl(0, 0%, 96%);
+    --btn-secondary: #cbbaba3d;
+    --blue: #ab7108;
+    --yellow: hsl(48, 95%, 58%);
+    --shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}

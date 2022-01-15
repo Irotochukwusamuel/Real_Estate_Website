@@ -1,0 +1,122 @@
+{% extends "private/base.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="content-well" app-data="portfolio">
+        <section class="main_content dashboard_part large_header_bg pl-0">
+            <!-- menu  -->
+            <!--/ menu  -->
+            <div class="main_content_iner overly_inner ">
+                <div class="container-fluid p-0 ">
+                    <!-- page title  -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                                <div class="page_title_left d-flex align-items-center">
+                                    <h3 class="f_s_25 f_w_700 dark_text mr_30">My Portfolio</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-xl-12 ">
+                            <div class="white_card card_height_100 mb_30 user_crm_wrapper">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="single_crm">
+                                            <div class="icon">
+                                                <i class="ri-home-3-line"></i>
+                                            </div>
+                                            <div class="crm_body">
+                                                <h4>{{ port["total_properties"] }}</h4>
+                                                <p>Total Properties</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="single_crm">
+                                            <div class="icon">
+                                                <i class="ri-refund-2-fill"></i>
+                                            </div>
+                                            <div class="crm_body">
+                                                <h4>{{ port["approved"] }}</h4>
+                                                <p>Total Transactions</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="single_crm">
+                                            <div class="icon">
+                                                <i class="ri-bit-coin-fill"></i>
+                                            </div>
+                                            <div class="crm_body">
+                                                <h4>${{ port["total_amount"] }}.00</h4>
+                                                <p>Total Amount Transacted</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="white_card card_height_100 mb_30">
+                                <div class="white_card_header">
+                                    <div class="box_header m-0">
+                                        <div class="main-title">
+                                            <h3 class="m-0">Latest Users</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="white_card_body">
+                                    <div class="QA_section">
+                                        <div class="QA_table mb_30">
+                                            <!-- table-responsive -->
+                                            <table class="table lms_table_active3 ">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">plan</th>
+                                                    <th scope="col">REIT ($)</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">REIT (%)</th>
+                                                    <th scope="col">status</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for data in port["properties"] %}
+                                                <tr>
+                                                    <td>{{ loop.index }}</td>
+                                                    <td>
+                                                        <div class="name" >
+                                                            <a href="/property/{{ data["id"] }}" class="nm" style="color: #a71d2a;font-weight: bolder;letter-spacing: 0.5px">{{ data["name"] }}</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text_color_6" style="color: #4c2fbf">{{ data["plan"]|capitalize }}</td>
+                                                    <td class="text_color_11">${{ data["reit"] }}.00</td>
+                                                    <td>{{ data["date"] }}</td>
+                                                    <td class="text-dark">{{ data["reit_percent"] }}%</td>
+                                                    <td class="text-dark">{{ data["status"]|capitalize }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+{% endblock %}
